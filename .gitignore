@@ -1,0 +1,11 @@
+.DS_Store
+.atom/
+.idea
+.emacs.d/
+.packages
+.pub/
+build/
+ios/.generated/
+packages
+# This is an application, so lock the pubspec for everyone checking this out: pubspec.lock
+.flutter-plugins
