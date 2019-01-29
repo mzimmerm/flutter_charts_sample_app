@@ -9,3 +9,5 @@ ios/.generated/
 packages
 # This is an application, so lock the pubspec for everyone checking this out: pubspec.lock
 .flutter-plugins
+# what is this??
+.dart_tool
