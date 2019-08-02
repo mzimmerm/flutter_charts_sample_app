@@ -7,5 +7,9 @@
 build/
 ios/.generated/
 packages
+
 # This is an application, so lock the pubspec for everyone checking this out: pubspec.lock
 .flutter-plugins
+
+# Dart Tool is used for something that should be ignored - see https://github.com/dart-lang/site-www/issues/444
+.dart_tool
