@@ -15,9 +15,13 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    /* mz
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
-
+    */
+    compileSdkVersion 29
+    buildToolsVersion '29.0.1' // this must be same as "Android SDK Build-Tools" in Adroid Studio. MUST EXIST AS software/android/studio/sdk/build-tools/29.0.1
+    
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -45,8 +49,18 @@ flutter {
     source '../..'
 }
 
+/* mz
 dependencies {
     androidTestCompile 'com.android.support:support-annotations:25.4.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
+*/
+
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+

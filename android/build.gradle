@@ -1,4 +1,6 @@
+// mz see https://github.com/flutter/flutter/wiki/Upgrading-Flutter-projects-to-Gradle-4.1-and-Android-Studio-Gradle-plugin-3.0.1
 buildscript {
+/* mz
     repositories {
         jcenter()
         maven {
@@ -9,20 +11,46 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
     }
+*/
+
+    repositories {
+        google()
+        jcenter()
+    }
+    
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
 }
 
 allprojects {
+/* mz
     repositories {
         jcenter()
         maven {
             url "https://maven.google.com"
         }
     }
+*/
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 rootProject.buildDir = '../build'
+
+/* mz
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(':app')
+}
+*/
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
     project.evaluationDependsOn(':app')
 }
 
