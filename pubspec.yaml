@@ -1,6 +1,21 @@
 name: flutter_charts_sample_app
 description: A sample application that uses Flutter Charts from pub -  https://pub.dartlang.org/packages/flutter_charts.
 
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# mz: 0.0.1+1 the +1 is build number. This stuff is used in build.gradle : see versionCode & versionName
+# mz: When uploading to Google Playstore console, flutter.versionCode must no repeat (console calls it version).
+# mz: The "version" generates local.properties, flutter.versionName and flutter.versionCode
+version: 0.0.3+3
+
 dependencies:
   flutter_charts: ^0.1.5
   flutter:
