@@ -43,10 +43,12 @@ description: A sample application that uses Flutter Charts from pub -  https://p
 #   use the following format for "version:" in pubspec.yaml
 #        1.2.3+integer  e.g. 0.0.4+4
 #
-#   Resolution with reasoning
-#   "versionNumber" - semantic versioning must be used unless empty.
+# version: format to use - Resolution with reasoning
+#   "versionNumber" - e.g. 0.0.4 - semantic versioning must be used unless empty.
 #   +
-#   "build"        - integer - to satisfy Google Play Store "versionCode" requirement. Must keep increasing
+#   "build"        - e.g. 5      - integer - to satisfy Google Play Store "versionCode" requirement.
+#                                            Will show as versionCode on Google Play Store.
+#                                            Must keep increasing.
 #######################
 
 version: 0.0.4+4
