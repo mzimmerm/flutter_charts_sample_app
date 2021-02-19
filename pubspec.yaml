@@ -11,6 +11,14 @@ dev_dependencies:
   flutter_test:
     sdk:  flutter
 
+# Without the "environment" section, we get message on
+#   `flutter packages pub publish`:
+# Older versions of pub don't support the Flutter SDK.
+# Make sure your SDK constraint excludes old versions:
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
   # If your app is using the CupertinoIcons class for iOS style icons,
   #   enable (uncomment) the line below.
   # cupertino_icons: ^0.1.0
