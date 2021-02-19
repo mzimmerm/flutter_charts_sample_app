@@ -1,3 +1,6 @@
+# mz security - key for the app must not be checked in
+key.properties
+
 # mz
 .emacs.d/
 

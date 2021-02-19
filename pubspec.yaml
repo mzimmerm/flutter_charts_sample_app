@@ -1,6 +1,58 @@
 name: flutter_charts_sample_app
 description: A sample application that uses Flutter Charts from pub -  https://pub.dartlang.org/packages/flutter_charts.
 
+# version: The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+
+#######################
+# MZ Versioning summary
+# ---------------------
+# A. In pubspec.yaml (this file), version: is required on packages copied to pub.
+#         For such packages, this must use semantic versioning format - e.g.: 1.2.3+build-3
+#
+#         BUT BECAUSE version: is reused for Flutter:
+#              - 2. Flutter Android builds (build.gradle)
+#              - 3. Flutter iOS builds
+#              - 4. Deployments to Google Play
+#         MESS ENSUES
+#
+#  More details on how different tiers use version:
+#    1. pubspec.yaml terminology (which is semantic versioning format)
+#           version: versionNumber+build
+#         Format restrictions:
+#           "versionNumber" is like 1.2.3                               - "versionNumber" IF USED HERE (pubspec.yaml), must be like 1.2.3
+#            "build"        is like alpha-1  (build is optional)        - "build" almost any string (no spaces) .
+#    2. Flutter Android builds: build.gradle uses "versionNumber" and "build" to set the following properties
+#           "versionName" <- versionNumber                              - versionName format: any string. Only to show to users. Can be overridden by --build-name
+#                                                                         BUT versionNumber restriction from pubspec.yaml forces it to 1.2.3
+#           "versionCode" <- build                                      - versionCode format: integer (1, 2, 3, etc).  Can be overridden by --build-number
+#    3. Flutter iOS builds Todo
+#    4. Google Play deploy:
+#           releaseName <- Set from UI                                    - releaseName format: any string
+#           versionCode <- "flutter.versionCode" (=="build" from pubspec) - versionCode format: integer (1, 2, 3, etc) - inherited from Android. MUST change on new release.
+# Resolution:
+#   TO RESOLVE THE CONFLICTING REQUIREMENTS, IN HERE (pubspec.yaml)
+#   use the following format for "version:" in pubspec.yaml
+#        1.2.3+integer  e.g. 0.0.4+4
+#
+# version: format to use - Resolution with reasoning
+#   "versionNumber" - e.g. 0.0.4 - semantic versioning must be used unless empty.
+#   +
+#   "build"        - e.g. 5      - integer - to satisfy Google Play Store "versionCode" requirement.
+#                                            Will show as versionCode on Google Play Store.
+#                                            Must keep increasing.
+#######################
+
+version: 0.0.4+4
+
 dependencies:
   flutter_charts: ^0.1.5
   flutter:
