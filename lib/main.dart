@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful,
   // meaning that it has a State object (defined below) that contains
@@ -70,15 +70,19 @@ class MyHomePage extends StatefulWidget {
 
 /// State of the page.
 class _MyHomePageState extends State<MyHomePage> {
-  LineChartOptions _lineChartOptions;
-  ChartOptions _verticalBarChartOptions;
-  LabelLayoutStrategy _xContainerLabelLayoutStrategy;
-  ChartData _chartData;
+  LineChartOptions _lineChartOptions = LineChartOptions(); // done-null-safety added = new instance
+  ChartOptions _verticalBarChartOptions = VerticalBarChartOptions(); // done-null-safety added = new instance
+  LabelLayoutStrategy _xContainerLabelLayoutStrategy = new DefaultIterativeLabelLayoutStrategy(
+    options: VerticalBarChartOptions(),
+  ); // done-null-safety added = new instance
+  ChartData _chartData = new RandomChartData(
+  useUserProvidedYLabels: LineChartOptions().useUserProvidedYLabels); // // done-null-safety added = new instance
 
   _MyHomePageState() {
     // defineOptionsAndData();
   }
 
+  // todo-00-null-safety : figure out a way to not have to call defineOptionsAndData, or define members at point of init, OR pass to constructor
   void defineOptionsAndData() {
     _lineChartOptions = new LineChartOptions();
     _verticalBarChartOptions = new VerticalBarChartOptions();
