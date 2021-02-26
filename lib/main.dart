@@ -50,8 +50,9 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful,
-  // meaning that it has a State object (defined below) that contains
-  // fields that affect how it looks.
+  // meaning that it has a createState() method (defined below) that
+  // returns a State object extension, which contains and manages
+  // fields that affect how the home page looks.
 
   // This class is the configuration for the state. It holds the
   // values (in this case the title) provided by the parent (in this
@@ -69,37 +70,80 @@ class MyHomePage extends StatefulWidget {
 }
 
 /// State of the page.
+/// All members are required, as they are, in turn, required by the
+/// chart constructors.
 class _MyHomePageState extends State<MyHomePage> {
-  LineChartOptions _lineChartOptions = LineChartOptions(); // done-null-safety added = new instance
-  ChartOptions _verticalBarChartOptions = VerticalBarChartOptions(); // done-null-safety added = new instance
-  LabelLayoutStrategy _xContainerLabelLayoutStrategy = new DefaultIterativeLabelLayoutStrategy(
-    options: VerticalBarChartOptions(),
-  ); // done-null-safety added = new instance
-  ChartData _chartData = new RandomChartData(
-  useUserProvidedYLabels: LineChartOptions().useUserProvidedYLabels); // // done-null-safety added = new instance
+  // done-null-safety : Note: To be able to have non-nullable types on members
+  //   such as _lineChartOptions (and all others here), 2 things need be done:
+  //   1. The member must be initialized with some non-null value,
+  //      either in the definition or in constructor initializer list
+  //   2. If a member is passed to a constructor (see  _MyHomePageState.fromOptionsAndData)
+  //      the constructor value must still be marked "required".
+  //      This serves as a lasso that enforces callers to set the non-null.
+  //      But why Dart would not use the initialized value?
 
-  _MyHomePageState() {
-    // defineOptionsAndData();
+  /// Define options for line chart, if used in the demo.
+  LineChartOptions _lineChartOptions = new LineChartOptions();
+
+  /// Define options for vertical bar chart, if used in the demo
+  ChartOptions _verticalBarChartOptions = new VerticalBarChartOptions();
+
+  // If you were to use your own extension of
+  //           DefaultIterativeLabelLayoutStrategy or LayoutStrategy,
+  //           this is how to use it. If _xContainerLabelLayoutStrategy
+  //           is not set (and remains null), the charts instantiate
+  //           the DefaultIterativeLabelLayoutStrategy.
+
+  /// Define Layout strategy go labels. todo-null-safety : this can be null here
+  LabelLayoutStrategy _xContainerLabelLayoutStrategy =
+      new DefaultIterativeLabelLayoutStrategy(
+    options: new VerticalBarChartOptions(),
+  );
+
+  /// Define data to be displayed
+  ChartData _chartData = new RandomChartData(
+      useUserProvidedYLabels: new LineChartOptions().useUserProvidedYLabels);
+
+  /// Default constructor uses member defaults for all options and data.
+  _MyHomePageState();
+
+  /// Constructor sets all options and data.
+  _MyHomePageState.fromOptionsAndData({
+    required LineChartOptions lineChartOptions,
+    required ChartOptions verticalBarChartOptions,
+    required LabelLayoutStrategy xContainerLabelLayoutStrategy,
+    required ChartData chartData,
+  })
+  /* initializer list: an alternative to initializing at the point of definition
+      : _lineChartOptions = new LineChartOptions(),
+        _verticalBarChartOptions = new VerticalBarChartOptions(),
+        _xContainerLabelLayoutStrategy =
+            new DefaultIterativeLabelLayoutStrategy(
+          options: new VerticalBarChartOptions(),
+        ),
+        _chartData = new RandomChartData(
+            useUserProvidedYLabels:
+                new LineChartOptions().useUserProvidedYLabels) 
+  */
+  {
+    _lineChartOptions = lineChartOptions;
+    _verticalBarChartOptions = verticalBarChartOptions;
+    _xContainerLabelLayoutStrategy = xContainerLabelLayoutStrategy;
+    _chartData = chartData;
   }
 
-  // todo-00-null-safety : figure out a way to not have to call defineOptionsAndData, or define members at point of init, OR pass to constructor
+  /// Constructor allows to set only data and keep other values default.
+  _MyHomePageState.fromData({required ChartData chartData}) {
+    _chartData = chartData;
+  }
+
+  /// Define options and data for chart
   void defineOptionsAndData() {
-    _lineChartOptions = new LineChartOptions();
-    _verticalBarChartOptions = new VerticalBarChartOptions();
-    // If you were to use your own extension of
-    //           DefaultIterativeLabelLayoutStrategy or LayoutStrategy,
-    //           this is how to use it. If _xContainerLabelLayoutStrategy
-    //           is not set (and remains null), the charts instantiate
-    //           the DefaultIterativeLabelLayoutStrategy.
-    _xContainerLabelLayoutStrategy = new DefaultIterativeLabelLayoutStrategy(
-      options: _verticalBarChartOptions,
-    );
-    // _xContainerLabelLayoutStrategy = null;
     _chartData = new RandomChartData(
         useUserProvidedYLabels: _lineChartOptions.useUserProvidedYLabels);
   }
 
-  /* ALWAYS TOP - DEFAULT - Default - Random data
+/* ALWAYS TOP - DEFAULT - Default - Random data
   void defineOptionsAndData() {
     _lineChartOptions = new LineChartOptions();
     _verticalBarChartOptions = new VerticalBarChartOptions();
@@ -108,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   */
 
-  /* 9  - Explicit use of DefaultIterativeLabelLayoutStrategy.
+/* 9  - Explicit use of DefaultIterativeLabelLayoutStrategy.
           The _xContainerLabelLayoutStrategy must also work commented out.
 
   void defineOptionsAndData() {
@@ -128,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
    */
 
-  /* 8 - Explicit use of DefaultIterativeLabelLayoutStrategy (see also 9),
+/* 8 - Explicit use of DefaultIterativeLabelLayoutStrategy (see also 9),
          to show how to use in case extensions are needed
 
   void defineOptionsAndData() {
@@ -149,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
    */
 
-  /* 7 - Default - Random data
+/* 7 - Default - Random data
   void defineOptionsAndData() {
     _lineChartOptions = new LineChartOptions();
     _verticalBarChartOptions = new VerticalBarChartOptions();
@@ -158,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   */
 
-  /* 6 Test a bug reported by Lonenzo Tejera
+/* 6 Test a bug reported by Lonenzo Tejera
 
   void defineOptionsAndData() {
     _lineChartOptions = new LineChartOptions();
@@ -179,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
    */
 
-  /* 5 Demonstrate order of painting lines on the line chart,
+/* 5 Demonstrate order of painting lines on the line chart,
        when dataRows lines are on top of each other
 
   void defineOptionsAndData() {
@@ -203,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
    */
 
-  /* 4 Basic simpliest demo
+/* 4 Basic simpliest demo
 
    void defineOptionsAndData() {
      _lineChartOptions = new LineChartOptions();
@@ -212,7 +256,7 @@ class _MyHomePageState extends State<MyHomePage> {
    }
    */
 
-  /* 3
+/* 3
    void defineOptionsAndData() {
      _lineChartOptions = new LineChartOptions();
      _verticalBarChartOptions = new VerticalBarChartOptions();
@@ -234,7 +278,7 @@ class _MyHomePageState extends State<MyHomePage> {
    }
    */
 
-  /* 2
+/* 2
    void defineOptionsAndData() {
      // This example shows user defined Y Labels.
      //   When setting Y labels by user, the dataRows value scale
@@ -279,7 +323,7 @@ class _MyHomePageState extends State<MyHomePage> {
    }
   */
 
-  /* 1
+/* 1
    void defineOptionsAndData() {
      // In each column, adding it's absolute values should add to same number:
      // 100 would make more sense, to represent 100% of stocks in each category.
@@ -324,7 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // and so nothing would appear to happen.
 
       /// here we create new random data to illustrate state change
-      // defineOptionsAndData();
+      defineOptionsAndData();
     });
   }
 
@@ -359,13 +403,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Let us give the LineChart full width and half of height of window.
     final ui.Size chartLogicalSize =
-    new Size(windowLogicalSize.width, windowLogicalSize.height / 2);
+        new Size(windowLogicalSize.width, windowLogicalSize.height / 2);
 
     print(" ### Size: ui.window.physicalSize=${ui.window.physicalSize}, "
         "windowLogicalSize = mediaQueryData.size = $windowLogicalSize,"
         "chartLogicalSize=$chartLogicalSize");
 
-    defineOptionsAndData();
+    // defineOptionsAndData(); // done-null-safety removed
 
     LineChart lineChart = new LineChart(
       painter: new LineChartPainter(),
@@ -447,7 +491,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //     column's "growing" direction (that is vertically |)
             //     to the fullest available outside height.
             //   - For Row  (e.g. children: [A, B, Expanded (C)]) stretches C in
-            //     rows's "growing" direction (that is horizontally <-->)
+            //     row's "growing" direction (that is horizontally <-->)
             //     to the fullest available outside width.
             // The layout of this code, is, structurally like this:
             //   Column (children: [
@@ -484,10 +528,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   // new Text('<<'), // horizontal
                   // new Text('<<<<<<'),   // tilted
-                  // new Text('<<<<<<<<<<<'),   // skiped (shows 3 labels)
-                  // new Text('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'), // skiped (2)
-                  // new Text('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'),// gave up
-                  new Text('<<<<<<'), // tilted
+                  // new Text('<<<<<<<<<<<'),   // skipped (shows 3 labels)
+                  // new Text('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'), // skipped (2)
+                  // new Text('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'), // gave up
+                  new Text('<<<<<<'),
+                  // tilted
                 ],
               ),
             ),
