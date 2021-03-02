@@ -28,51 +28,71 @@ key.properties
 
 # Flutter/Dart/Pub related
 **/doc/api/
+**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 /build/
 
-# Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
+# mz added - this file claims not to be wanted to add 
+/ios/Flutter/flutter_export_environment.sh
 
-# iOS/XCode related
-**/ios/**/*.mode1v3
-**/ios/**/*.mode2v3
-**/ios/**/*.moved-aside
-**/ios/**/*.pbxuser
-**/ios/**/*.perspectivev3
-**/ios/**/*sync/
-**/ios/**/.sconsign.dblite
-**/ios/**/.tags*
-**/ios/**/.vagrant/
-**/ios/**/DerivedData/
-**/ios/**/Icon?
-**/ios/**/Pods/
-**/ios/**/.symlinks/
-**/ios/**/profile
-**/ios/**/xcuserdata
-**/ios/.generated/
-**/ios/Flutter/App.framework
-**/ios/Flutter/Flutter.framework
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
-**/ios/ServiceDefinitions.json
-**/ios/Runner/GeneratedPluginRegistrant.*
+# Web related
+lib/generated_plugin_registrant.dart
 
-# Exceptions to above rules.
-!**/ios/**/default.mode1v3
-!**/ios/**/default.mode2v3
-!**/ios/**/default.pbxuser
-!**/ios/**/default.perspectivev3
-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+
+# 2021-03-02 # Android related
+# 2021-03-02 **/android/**/gradle-wrapper.jar
+# 2021-03-02 **/android/.gradle
+# 2021-03-02 **/android/captures/
+# 2021-03-02 **/android/gradlew
+# 2021-03-02 **/android/gradlew.bat
+# 2021-03-02 **/android/local.properties
+# 2021-03-02 **/android/**/GeneratedPluginRegistrant.java
+# 2021-03-02 
+# 2021-03-02 # iOS/XCode related
+# 2021-03-02 **/ios/**/*.mode1v3
+# 2021-03-02 **/ios/**/*.mode2v3
+# 2021-03-02 **/ios/**/*.moved-aside
+# 2021-03-02 **/ios/**/*.pbxuser
+# 2021-03-02 **/ios/**/*.perspectivev3
+# 2021-03-02 **/ios/**/*sync/
+# 2021-03-02 **/ios/**/.sconsign.dblite
+# 2021-03-02 **/ios/**/.tags*
+# 2021-03-02 **/ios/**/.vagrant/
+# 2021-03-02 **/ios/**/DerivedData/
+# 2021-03-02 **/ios/**/Icon?
+# 2021-03-02 **/ios/**/Pods/
+# 2021-03-02 **/ios/**/.symlinks/
+# 2021-03-02 **/ios/**/profile
+# 2021-03-02 **/ios/**/xcuserdata
+# 2021-03-02 **/ios/.generated/
+# 2021-03-02 **/ios/Flutter/App.framework
+# 2021-03-02 **/ios/Flutter/Flutter.framework
+# 2021-03-02 **/ios/Flutter/Generated.xcconfig
+# 2021-03-02 **/ios/Flutter/app.flx
+# 2021-03-02 **/ios/Flutter/app.zip
+# 2021-03-02 **/ios/Flutter/flutter_assets/
+# 2021-03-02 **/ios/ServiceDefinitions.json
+# 2021-03-02 **/ios/Runner/GeneratedPluginRegistrant.*
+# 2021-03-02 
+# 2021-03-02 # Exceptions to above rules.
+# 2021-03-02 !**/ios/**/default.mode1v3
+# 2021-03-02 !**/ios/**/default.mode2v3
+# 2021-03-02 !**/ios/**/default.pbxuser
+# 2021-03-02 !**/ios/**/default.perspectivev3
+# 2021-03-02 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
