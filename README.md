@@ -9,10 +9,10 @@ There are two potential take aways from this project:
 
 ## Notes on getting Started
 
-For help getting started with Flutter, view our online
+For help getting started with Flutter, view
 [documentation](http://flutter.io/).
 
-The flutter_charts library on pub is at https://pub.dartlang.org/packages/flutter_charts.
+The flutter_charts library on pub is at https://pub.dev/packages/flutter_charts.
 
 ## Possible errors running a Flutter app
 
@@ -35,10 +35,12 @@ Apparently one should remove any flutter version before ` flutter packages pub p
 dependencies:
   flutter:
     sdk:  flutter
-  decimal: ">=0.1.4 <0.2.0"
+  decimal:
 
 dev_dependencies:
   test:
   flutter_test:
     sdk:  flutter
 ```
+
+
