@@ -3,6 +3,7 @@ key.properties
 
 # mz
 .emacs.d/
+google_fonts/
 
 # Miscellaneous
 *.class
